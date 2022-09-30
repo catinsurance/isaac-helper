@@ -1,8 +1,8 @@
 --- Utility functions for doing math.
 
 local ExtraMath = {}
-ExtraMath._VERSION = '2.0.0'
-ExtraMath._VERSION_NUM = 2
+ExtraMath._VERSION = '2.1.0'
+ExtraMath._VERSION_NUM = 3
 ExtraMath.Enum = {}
 
 function ExtraMath.Clamp(value, min, max)
@@ -21,6 +21,14 @@ function ExtraMath.Round(num) -- this accounts for floating point inaccuracies
       return num
     end
     return num < 0 and num - ofs + ofs or num + ofs - ofs
+end
+
+function ExtraMath.Sqrt(x)
+    return x ^ 0.5
+end
+
+function ExtraMath.Pow(x, power)
+    return x ^ power
 end
 
 function ExtraMath.Init(ModReference, ModFileName)
