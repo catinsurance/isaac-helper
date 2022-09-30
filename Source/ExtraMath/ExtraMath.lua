@@ -1,14 +1,11 @@
 --- Utility functions for doing math.
 
 local ExtraMath = {}
-ExtraMath._VERSION = '1.0.0'
+ExtraMath._VERSION = '2.0.0'
+ExtraMath._VERSION_NUM = 2
+ExtraMath.Enum = {}
 
-local function init(ModReference, ModFileName)
-    -- we dont need to initialize anything, return true to indicate success
-    return true
-end
-
-function ExtraMath:Clamp(value, min, max)
+function ExtraMath.Clamp(value, min, max)
     if value < min then
         return min
     elseif value > max then
@@ -18,7 +15,7 @@ function ExtraMath:Clamp(value, min, max)
 end
 
 --- Returns the value provided rounded to the nearest integer.
-function ExtraMath:Round(num)
+function ExtraMath.Round(num) -- this accounts for floating point inaccuracies
     local ofs = 2^52
     if math.abs(num) > ofs then
       return num
@@ -26,10 +23,8 @@ function ExtraMath:Round(num)
     return num < 0 and num - ofs + ofs or num + ofs - ofs
 end
 
-setmetatable(ExtraMath, {
-    __call = function(_, ...)
-        return init(...) -- wrap the init function so we can call it like a constructor
-    end
-})
+function ExtraMath.Init(ModReference, ModFileName)
+    return true
+end
 
 return ExtraMath

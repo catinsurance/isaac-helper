@@ -1,0 +1,1 @@
+local a={}a._VERSION='2.0.0'a._VERSION_NUM=2;a.Enum={}function a.Clamp(b,c,d)if b<c then return c elseif b>d then return d end;return b end;function a.Round(e)local f=2^52;if math.abs(e)>f then return e end;return e<0 and e-f+f or e+f-f end;function a.Init(g,h)return true end;return a
