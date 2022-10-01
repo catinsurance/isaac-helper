@@ -1,6 +1,6 @@
 local PlayerTracker = {}
-PlayerTracker._VERSION = '1.0.1'
-PlayerTracker._VERSION_NUM = 2
+PlayerTracker._VERSION = '1.0.2'
+PlayerTracker._VERSION_NUM = 3
 
 local CharactersWithTwin = {
     PlayerType.PLAYER_JACOB,
@@ -30,7 +30,7 @@ function PlayerTracker.GetPlayers()
     local players = {}
     for i = 0, numPlayers do
         local player = Isaac.GetPlayer(i)
-        table.insert(players, player)
+        players[#players + 1] = player
     end
   
     return players
@@ -64,7 +64,7 @@ function PlayerTracker.GetPlayersWithCollectible(collectible, ignoreModifiers)
     local playersWithCollectible = {}
     for _, player in ipairs(players) do
         if player:HasCollectible(collectible, modifiers) then
-            table.insert(playersWithCollectible, player)
+            playersWithCollectible[#playersWithCollectible + 1] = player
         end
     end
     return playersWithCollectible

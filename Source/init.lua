@@ -1,6 +1,6 @@
 local IsaacHelper = {}
-IsaacHelper._VERSION = '2.0.0'
-IsaacHelper._VERSION_NUM = 2
+IsaacHelper._VERSION = '2.0.1'
+IsaacHelper._VERSION_NUM = 3
 IsaacHelper.Enum = {}
 
 local submodules = {}
@@ -9,6 +9,8 @@ local submodules = {}
 IsaacHelper.Enum.Submodules = {
     EXTRA_MATH = "ExtraMath",
     PLAYER_TRACKER = "PlayerTracker",
+    EXTRA_STRING = "ExtraString",
+    EXTRA_TABLE = "ExtraTable"
 }
 
 -- The below loads all modules and caches them.
