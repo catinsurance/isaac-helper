@@ -11,5 +11,5 @@ Need extra help? [Contact me on discord by joining my server](https://discord.gg
 
 # Credits
 Thanks to the following people for their contributions to this project:
-- ((((therealgoncholito))))#8378 for saying my idea is "actually pretty good."
+- Goncholito#8378 for saying my idea is "actually pretty good."
 - oatmealine#5397 for helping me with design.
