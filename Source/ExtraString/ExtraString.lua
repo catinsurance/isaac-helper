@@ -1,12 +1,12 @@
 local ExtraString = {}
-ExtraString._VERSION = '1.0.0'
-ExtraString._VERSION_NUM = 1
+ExtraString._VERSION = '1.0.1'
+ExtraString._VERSION_NUM = 2
 ExtraString.Enum = {}
 
 function ExtraString.ToBoolean(s)
-    if s == "true" then
+    if s:lower() == "true" then
         return true
-    elseif s == "false" then
+    elseif s:lower() == "false" then
         return false
     end
     
@@ -14,14 +14,12 @@ function ExtraString.ToBoolean(s)
 end
 
 function ExtraString.Split(str, separator)
-    local result = {}
-
     local output = {}
     for s in string.gmatch(str, "([^" .. separator .. "]+)") do
         output[#output + 1] = s
     end
 
-    return result
+    return output
 end
 
 function ExtraString.EndsWith(str, phrase)

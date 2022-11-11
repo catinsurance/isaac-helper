@@ -1,7 +1,7 @@
 # isaac-helper
 A modular, expanded TBoI: Repentance helper library where you only need to download the submodules you need.
 
-Most submodules have documentation. In general I only add new submodules when I have freetime and only add docs for them when I'm feeling especially productive. 
+Most submodules have documentation. In general I only add new submodules when I have freetime, but you're welcome to make a pull request if you want to add a new submodule.
 
 # How to install, documentation, examples, and general information
 [You can find out how to install, how to use, get documentation, learn the purposes of all submodules, and more by checking out the gitbook website!](https://maya-bee.gitbook.io/api-docs/)

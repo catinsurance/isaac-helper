@@ -1,9 +1,10 @@
 local IsaacHelper = {}
-IsaacHelper._VERSION = '2.0.2'
-IsaacHelper._VERSION_NUM = 4
+IsaacHelper._VERSION = '2.1.0'
+IsaacHelper._VERSION_NUM = 5
 IsaacHelper.Enum = {}
 
 local submodules = {}
+local modRef, modName
 
 -- Enumerator for the different submodules 
 IsaacHelper.Enum.Submodules = {
@@ -12,29 +13,36 @@ IsaacHelper.Enum.Submodules = {
     EXTRA_STRING = "ExtraString",
     EXTRA_TABLE = "ExtraTable",
     SCHEDULER = "Scheduler",
+    ENTITY_DATA = "EntityData",
 }
 
--- The below loads all modules and caches them.
--- This will load them again if this is called for a second time.
--- It should work with luamod.
-function IsaacHelper.Init(ModReference, ModFileName)
-    local path = ModFileName .. ".Modules"
+local function LoadModule(path, name)
     local modPath = "%s.%s"
-
-    for _, name in pairs(IsaacHelper.Enum.Submodules) do
-        local submodule = include(modPath:format(path, name))
-        if type(submodule) == "table" then -- if it doesnt exist, just move on
-            local initSuccess = submodule.Init(ModReference, ModFileName)
-            if initSuccess ~= true then
-                Isaac.DebugString("[ISAAC-HELPER] Failed to initialize submodule: " .. initSuccess) -- it'll return an error message
-            else
-                submodules[name] = submodule
-            end
+    local submodule = include(modPath:format(path, name))
+    if type(submodule) == "table" then -- if it doesnt exist, just move on
+        local initSuccess = submodule.Init(modRef, modName)
+        if initSuccess ~= true then
+            Isaac.DebugString("[ISAAC-HELPER] Failed to initialize submodule: " .. initSuccess) -- it'll return an error message
+        else
+            submodules[name] = submodule
         end
     end
 end
 
+-- The below gives isaac-helper the information it needs to load modules.
+-- It should work with luamod.
+-- Calling it will unload all loaded modules!
+function IsaacHelper.Init(ModReference, ModFileName)
+    modRef = ModReference
+    modName = ModFileName
+    submodules = {}
+end
+
 function IsaacHelper.GetModule(SubmoduleName)
+    if submodules[SubmoduleName] == nil then
+        LoadModule(modName .. ".Modules", SubmoduleName)
+    end
+    
     return submodules[SubmoduleName]
 end
 
