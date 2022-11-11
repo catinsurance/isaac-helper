@@ -1,6 +1,6 @@
 local IsaacHelper = {}
-IsaacHelper._VERSION = '2.0.1'
-IsaacHelper._VERSION_NUM = 3
+IsaacHelper._VERSION = '2.0.2'
+IsaacHelper._VERSION_NUM = 4
 IsaacHelper.Enum = {}
 
 local submodules = {}
@@ -10,7 +10,8 @@ IsaacHelper.Enum.Submodules = {
     EXTRA_MATH = "ExtraMath",
     PLAYER_TRACKER = "PlayerTracker",
     EXTRA_STRING = "ExtraString",
-    EXTRA_TABLE = "ExtraTable"
+    EXTRA_TABLE = "ExtraTable",
+    SCHEDULER = "Scheduler",
 }
 
 -- The below loads all modules and caches them.
@@ -25,7 +26,7 @@ function IsaacHelper.Init(ModReference, ModFileName)
         if type(submodule) == "table" then -- if it doesnt exist, just move on
             local initSuccess = submodule.Init(ModReference, ModFileName)
             if initSuccess ~= true then
-                print("Failed to initialize submodule: " .. initSuccess) -- it'll return an error message
+                Isaac.DebugString("[ISAAC-HELPER] Failed to initialize submodule: " .. initSuccess) -- it'll return an error message
             else
                 submodules[name] = submodule
             end
