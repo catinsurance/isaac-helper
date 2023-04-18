@@ -10,8 +10,3 @@ Most submodules have documentation. In general I only add new submodules when I 
 
 # Contact
 Need extra help? [Contact me on discord by joining my server](https://discord.gg/bNhNkGa6QX) and sending me a DM. 
-
-# Credits
-Thanks to the following people for their contributions to this project:
-- XxX_Lucia_2007_XxX#8378 for saying my idea is "actually pretty good."
-- oatmealine#5397 for helping me with design.
