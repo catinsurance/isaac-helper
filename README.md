@@ -1,3 +1,5 @@
+This was discontinued. Thanks.
+
 # isaac-helper
 A modular, expanded TBoI: Repentance helper library where you only need to download the submodules you need.
 
